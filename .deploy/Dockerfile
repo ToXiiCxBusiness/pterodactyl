@@ -6,6 +6,8 @@ EXPOSE 80 443
 # Disable interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENTRYPOINT [ "/bin/bash", "/entrypoint.sh" ]
+
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg
