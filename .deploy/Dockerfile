@@ -23,8 +23,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
-COPY composer.json composer.json
-COPY composer.lock composer.lock
 # TODO remove prestissimo when composer hits v2
 RUN composer global require hirak/prestissimo --no-plugins --no-scripts
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
