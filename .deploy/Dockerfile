@@ -35,6 +35,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
 
 # Copy app
+RUN mkdir  $LARAVEL_PATH/storage
 COPY --chown=www-data:www-data . $LARAVEL_PATH/
 COPY ./.deploy/config/php/local.ini /usr/local/etc/php/conf.d/local.ini
 RUN chmod -R 775 $LARAVEL_PATH/storage
