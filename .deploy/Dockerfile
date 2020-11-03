@@ -35,6 +35,9 @@ COPY --chown=www-data:www-data . $LARAVEL_PATH/
 COPY ./.deploy/config/php/local.ini /usr/local/etc/php/conf.d/local.ini
 RUN chmod -R 775 $LARAVEL_PATH/storage
 
+WORKDIR /usr/share/caddy
+RUN echo "Hello World" > index.html
+
 # Set any ENVs
 ARG APP_KEY=${APP_KEY}
 ARG APP_NAME=${APP_NAME}
