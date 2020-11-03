@@ -13,7 +13,7 @@ RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:r
 # Install supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/local/bin/supervisord
 
-# Install caddy
+# Install caddy ///
 COPY --from=caddy:2.0.0 /usr/bin/caddy /usr/local/bin/caddy
 
 # Install PHP extensions
