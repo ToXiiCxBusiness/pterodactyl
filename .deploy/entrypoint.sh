@@ -1,5 +1,5 @@
 #!/bin/sh
-
+echo "test"
 echo "🎬 entrypoint.sh"
 
 composer dump-autoload --no-interaction --no-dev --optimize
