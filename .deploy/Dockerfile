@@ -23,20 +23,22 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
-COPY composer.json composer.json
-COPY composer.lock composer.lock
 # TODO remove prestissimo when composer hits v2
 RUN composer global require hirak/prestissimo --no-plugins --no-scripts
 
-RUN mkdir -p /var/www/pterodactyl
+RUN mkdir /var/www/pterodactyl
 
 WORKDIR /var/www/pterodactyl
 
+# Install and Extract panel. Provide permissions to required files and webuser
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
-RUN tar --strip-components=1 -xzvf panel.tar.gz
+RUN tar -xzvf panel.tar.gz
+RUN chmod -R 755 storage/* bootstrap/cache/ 
+RUN chown -R www-data:www-data * 
 
-RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
-
+# Implement base .env and start service
+RUN cp .env.example .env
+RUN composer install --no-dev --optimize-autoloader
 WORKDIR /
 
 # Copy app
