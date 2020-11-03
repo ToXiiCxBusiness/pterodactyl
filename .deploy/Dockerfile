@@ -32,7 +32,7 @@ RUN mkdir -p /var/www/pterodactyl
 
 WORKDIR /var/www/pterodactyl
 
-RUN curl Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v0.7.19/panel.tar.gz
+RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
 RUN tar --strip-components=1 -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/
 
