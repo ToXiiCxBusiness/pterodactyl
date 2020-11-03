@@ -35,11 +35,9 @@ WORKDIR /var/www/pterodactyl
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
 RUN tar --strip-components=1 -xzvf panel.tar.gz
 
-RUN cp .env.example .env
 RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
 
 WORKDIR /
-RUN chmod -R 755 storage/* bootstrap/cache/
 
 # Copy app
 RUN mkdir  $LARAVEL_PATH/storage
