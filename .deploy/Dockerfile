@@ -26,8 +26,7 @@ COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 # COPY composer.json composer.json
 # COPY composer.lock composer.lock
 # TODO remove prestissimo when composer hits v2
-# RUN composer global require hirak/prestissimo --no-plugins --no-scripts
-# RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
+RUN composer global require hirak/prestissimo --no-plugins --no-scripts
 
 RUN mkdir -p /var/www/pterodactyl
 
@@ -36,6 +35,9 @@ WORKDIR /var/www/pterodactyl
 RUN curl Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v0.7.19/panel.tar.gz
 RUN tar --strip-components=1 -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/
+
+RUN cp .env.example .env
+RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
 
 WORKDIR /
 
