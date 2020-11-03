@@ -5,7 +5,7 @@ ENV LARAVEL_PATH=/srv/app
 WORKDIR $LARAVEL_PATH
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y build-essential cron curl locales zip unzip git
+RUN apt-get update && apt-get install -y build-essential cron curl locales zip unzip git nginx
 
 # Setup cron job
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
@@ -14,7 +14,7 @@ RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:r
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/local/bin/supervisord
 
 # Install caddy
-COPY --from=caddy:2.0.0 /usr/bin/caddy /usr/local/bin/caddy
+#COPY --from=caddy:2.0.0 /usr/bin/caddy /usr/local/bin/caddy
 
 # Install PHP extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
@@ -22,13 +22,11 @@ RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
-COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
-
+#COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 
 # TODO remove prestissimo when composer hits v2
 # RUN composer global require hirak/prestissimo --no-plugins --no-scripts
 # RUN composer install --prefer-dist --no-scripts --no-dev --no-autoloader && rm -rf /root/.composer
-RUN composer install --no-dev --optimize-autoloader
 
 # Copy app
 RUN mkdir $LARAVEL_PATH/storage
