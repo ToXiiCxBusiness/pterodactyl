@@ -13,7 +13,7 @@ RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:r
 # Install supervisord
 COPY --from=ochinchina/supervisord:latest /usr/local/bin/supervisord /usr/local/bin/supervisord
 
-# Install caddy ///
+# Install caddy
 COPY --from=caddy:2.0.0 /usr/bin/caddy /usr/local/bin/caddy
 
 # Install PHP extensions
@@ -23,6 +23,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
+
 
 # TODO remove prestissimo when composer hits v2
 RUN composer global require hirak/prestissimo --no-plugins --no-scripts
