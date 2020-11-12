@@ -34,6 +34,8 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 
 RUN cp /tmp/pterodact/default.conf /etc/nginx/conf.d/default.conf
 
+WORKDIR var/www/pterodactyl
+
 RUN php artisan key:generate --force
 RUN php artisan p:environment:setup
 
