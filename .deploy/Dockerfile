@@ -30,7 +30,7 @@ RUN apt-get install wget
 RUN mkdir /tmp/ptero
 
 WORKDIR /tmp/ptero
-# RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
+RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
-# RUN cp /tmp/ptero/default.conf /etc/nginx/conf.d/default.conf
+RUN cp /tmp/ptero/default.conf /etc/nginx/conf.d/default.conf
 
