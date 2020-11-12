@@ -23,6 +23,7 @@ RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
+RUn chown nginx:nginx * -R
 
 WORKDIR /
 
