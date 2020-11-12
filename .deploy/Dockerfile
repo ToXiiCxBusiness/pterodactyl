@@ -32,5 +32,5 @@ RUN mkdir /tmp/pteroda
 WORKDIR /tmp/pteroda
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
-RUN cp /tmp/pterod/default.conf /etc/nginx/conf.d/default.conf
+RUN cp /tmp/pteroda/default.conf /etc/nginx/conf.d/default.conf
 
