@@ -6,8 +6,6 @@ EXPOSE 80 443
 # Disable interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# ENTRYPOINT [ "/bin/bash", "/docker-entrypoint.sh" ]
-
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg
@@ -33,15 +31,6 @@ RUN mkdir /tmp/ptero
 
 WORKDIR /tmp/ptero
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/10-listen-on-ipv6-by-default.sh
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/20-envsubst-on-templates.sh
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
-
-RUN cp /tmp/ptero/docker-entrypoint.sh /
-RUN cp /tmp/ptero/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
-RUN cp /tmp/ptero/20-envsubst-on-templates.sh /docker-entrypoint.d
 # RUN cp /tmp/ptero/default.conf /etc/nginx/conf.d/default.conf
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
 
