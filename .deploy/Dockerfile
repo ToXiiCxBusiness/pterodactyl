@@ -27,7 +27,6 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data *
 
 WORKDIR /
-RUN mkdir /docker-entrypoint.d
 
 COPY .deploy/docker-entrypoint.sh /
 COPY .deploy/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
