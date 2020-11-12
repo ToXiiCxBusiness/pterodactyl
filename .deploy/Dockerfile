@@ -32,5 +32,6 @@ RUN mkdir /docker-entrypoint.d
 COPY .deploy/docker-entrypoint.sh /
 COPY .deploy/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
 COPY .deploy/20-envsubst-on-templates.sh /docker-entrypoint.d
+COPY .deploy/nginx.tmpl /etc/nginx/conf.d/default.conf
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
