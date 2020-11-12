@@ -41,7 +41,7 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 RUN cp /tmp/ptero/docker-entrypoint.sh /
 RUN cp /tmp/ptero/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
 RUN cp /tmp/ptero/20-envsubst-on-templates.sh /docker-entrypoint.d
-RUN cp /tmp/ptero/nginx.tmpl /etc/nginx/conf.d/default.conf
+RUN cp /tmp/ptero/default.conf /etc/nginx/conf.d/default.conf
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
