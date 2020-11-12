@@ -35,10 +35,7 @@ WORKDIR /tmp/ptero
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/10-listen-on-ipv6-by-default.sh
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/20-envsubst-on-templates.sh
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
+RUN ls
 
-COPY /tmp/ptero/docker-entrypoint.sh /
-COPY /tmp/ptero/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
-COPY /tmp/ptero/20-envsubst-on-templates.sh /docker-entrypoint.d
-COPY /tmp/ptero/nginx.tmpl /etc/nginx/conf.d/default.conf
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
