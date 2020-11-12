@@ -21,6 +21,10 @@ WORKDIR var/www/pterodactyl
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
 RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
-RUN chown -R www-data:www-data *
+
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN cp .env.example .env
+RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
+
