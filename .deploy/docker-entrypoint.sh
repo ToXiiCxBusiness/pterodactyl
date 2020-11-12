@@ -33,4 +33,8 @@ if [ "$1" = "nginx" -o "$1" = "nginx-debug" ]; then
     fi
 fi
 
+echo "Setting php artisan"
+php artisan key:generate --force
+php artisan p:environment:setup
+
 exec "$@"
