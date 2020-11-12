@@ -27,12 +27,12 @@ RUN chown -R www-data:www-data *
 WORKDIR /
 
 RUN apt-get install wget
-RUN mkdir /tmp/pterodact
+RUN mkdir /tmp/pterodacty
 
-WORKDIR /tmp/pterodact
+WORKDIR /tmp/pterodacty
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
-RUN cp /tmp/pterodact/default.conf /etc/nginx/conf.d/default.conf
+RUN cp /tmp/pterodacty/default.conf /etc/nginx/conf.d/default.conf
 
 # RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
