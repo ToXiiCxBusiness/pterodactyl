@@ -22,7 +22,8 @@ RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download
 RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
 
-RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer 
+RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
