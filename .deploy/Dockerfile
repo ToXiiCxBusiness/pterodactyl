@@ -15,19 +15,4 @@ RUN apt-get -y install tar unzip tini redis-server cron php7.3 php7.3-cli php7.3
 
 COPY ./.deploy/entrypoint.sh /
 
-# Install Panel
-RUN mkdir -p var/www/pterodactyl
-WORKDIR var/www/pterodactyl
-RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
-RUN tar -xzvf panel.tar.gz
-RUN chmod -R 755 storage/* bootstrap/cache/ 
-RUN chown -R www-data:www-data *
- 
-# Install Composer
-COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 
-# Copy and Run composer
-RUN cp .env.example .env
-RUN composer install --no-dev --optimize-autoloader
-
-RUN chown -R www-data:www-data *
