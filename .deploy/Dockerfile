@@ -27,10 +27,10 @@ RUN chown -R www-data:www-data *
 WORKDIR /
 
 RUN apt-get install wget
-RUN mkdir /tmp/pterodac
+RUN mkdir /tmp/pterodact
 
-WORKDIR /tmp/pterodac
+WORKDIR /tmp/pterodact
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
-RUN cp /tmp/pterodac/default.conf /etc/nginx/conf.d/default.conf
+RUN cp /tmp/pterodact/default.conf /etc/nginx/conf.d/default.conf
 
