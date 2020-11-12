@@ -27,7 +27,6 @@ RUN chown -R www-data:www-data *
 WORKDIR /
 
 RUN apt-get install wget
-RUN rm -r /tmp/ptero
 RUN mkdir /tmp/ptero
 
 WORKDIR /tmp/ptero
