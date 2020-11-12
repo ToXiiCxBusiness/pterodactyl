@@ -34,3 +34,8 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 
 RUN cp /tmp/pterodact/default.conf /etc/nginx/conf.d/default.conf
 
+RUN php artisan key:generate --force
+RUN php artisan p:environment:setup
+
+RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
+
