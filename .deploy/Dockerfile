@@ -43,5 +43,5 @@ RUN cp /tmp/ptero/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
 RUN cp /tmp/ptero/20-envsubst-on-templates.sh /docker-entrypoint.d
 # RUN cp /tmp/ptero/default.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+# ENTRYPOINT ["/docker-entrypoint.sh"]
 
