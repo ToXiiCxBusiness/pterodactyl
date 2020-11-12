@@ -35,9 +35,10 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 RUN cp /tmp/pterodact/default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /
-RUN rm docker-entrypoint.sh
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
-
+#RUN rm docker-entrypoint.sh
+#RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
+RUN php /srv/app/artisan key:generate --force
+RUN php /srv/app/artisan p:environment:setup
 
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
