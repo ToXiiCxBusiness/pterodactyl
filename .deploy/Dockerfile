@@ -27,9 +27,10 @@ RUN chown -R www-data:www-data *
 WORKDIR /
 
 RUN apt-get install wget
-RUN mkdir /tmp/pteroda
+RUN rm -r /tmp/ptero
+RUN mkdir /tmp/ptero
 
-WORKDIR /tmp/pteroda
+WORKDIR /tmp/ptero
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
 RUN cp /tmp/pteroda/default.conf /etc/nginx/conf.d/default.conf
