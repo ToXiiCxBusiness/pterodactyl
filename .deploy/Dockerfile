@@ -11,9 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg
-RUN apt-get -y install composer tar unzip tini redis-server cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
-
-# COPY ./.deploy/entrypoint.sh /
+RUN apt-get -y install composer tar unzip tini redis-server cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip 
 
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
@@ -27,4 +25,12 @@ RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
+
+WORKDIR /
+RUN mkdir /docker-entrypoint.d
+
+COPY .deploy/docker-entrypoint.sh /
+COPY .deploy/10-listen-on-ipv6-by-default.sh /docker-entrypoint.d
+COPY .deploy/20-envsubst-on-templates.sh /docker-entrypoint.d
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
