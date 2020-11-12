@@ -27,6 +27,8 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chown -R www-data:www-data *
 
 WORKDIR /
+
+RUN apt-get wget
 RUN mkdir /tmp/ptero
 
 WORKDIR /tmp/ptero
