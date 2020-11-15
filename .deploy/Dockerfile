@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4-fpm-apache
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
@@ -21,11 +21,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 
-RUN add-apt-repository main
-RUN add-apt-repository ppa:nginx/stable
-RUN apt-get update
-
-RUN apt-get -y install nginx
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
 WORKDIR var/www/pterodactyl
