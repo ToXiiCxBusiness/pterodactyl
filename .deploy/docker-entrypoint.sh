@@ -36,8 +36,4 @@ fi
 echo "Start PHP-FPM service"
 service php7.3-fpm start
 
-echo "Setting php artisan"
-php artisan key:generate --force
-php artisan p:environment:setup
-
 exec "$@"
