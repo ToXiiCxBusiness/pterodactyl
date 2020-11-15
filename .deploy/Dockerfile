@@ -28,7 +28,7 @@ WORKDIR /
 
 RUN apt-get install wget
 RUN mkdir /tmp/pterodactyl
-RUN wget https://github.com/ToXiiCxBusiness/pterodactyl/blob/master/.deploy/docker-entrypoint.sh
+RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
