@@ -30,8 +30,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
 
-RUN echo Test
 WORKDIR /
+RUN echo Test
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
