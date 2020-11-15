@@ -20,8 +20,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
-COPY composer.json composer.json
-COPY composer.lock composer.lock
 
 
 # Install Panel
