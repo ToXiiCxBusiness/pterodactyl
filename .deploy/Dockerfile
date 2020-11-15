@@ -21,7 +21,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install composer & app dependencies
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 
-
+RUN apt-get -y install nginx
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
 WORKDIR var/www/pterodactyl
@@ -34,7 +34,6 @@ RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
-RUn chown nginx:nginx * -R
 
 WORKDIR /
 
