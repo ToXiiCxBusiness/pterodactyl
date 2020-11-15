@@ -1,4 +1,4 @@
-FROM php:7.4-fpm
+FROM php:7.4-nginx
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
