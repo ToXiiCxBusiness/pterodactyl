@@ -16,7 +16,7 @@ COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr
 RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid exif pcntl zip
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get -y install composer nginx tar unzip tini redis-server cron
+RUN apt-get -y install composer nginx tar unzip redis-server
 
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
