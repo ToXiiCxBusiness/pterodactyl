@@ -13,7 +13,7 @@ RUN apt-get -y install software-properties-common curl apt-transport-https ca-ce
 
 # Install PHP extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
-RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid exif pcntl zip
+RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid exif pcntl zip cli mbstring xml curl
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # RUN apt-get -y install composer nginx redis-server
