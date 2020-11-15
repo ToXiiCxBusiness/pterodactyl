@@ -34,5 +34,5 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 
 RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 
-# RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
+RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
