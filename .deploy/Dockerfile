@@ -26,6 +26,7 @@ RUN chown -R www-data:www-data *
 
 WORKDIR /
 
+#Test
 RUN apt-get install wget
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
