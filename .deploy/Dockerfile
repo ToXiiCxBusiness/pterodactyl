@@ -24,6 +24,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
 
+RUN echo Test
 WORKDIR /
 RUN apt-get install wget
 RUN mkdir /tmp/pterodactyl
