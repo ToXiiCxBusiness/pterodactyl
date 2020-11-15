@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM nginx
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg
-RUN apt-get -y install composer nginx tar unzip tini redis-server cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip 
+RUN apt-get -y install composer nginx tar unzip tini redis-server cron php7.4 php7.4-cli php7.4-gd php7.4-mysql php7.4-pdo php7.4-mbstring php7.4-bcmath php7.4-xml php7.4-fpm php7.4-curl php7.4-zip 
 
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
@@ -33,7 +33,7 @@ RUN mkdir /tmp/pterodactyl
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
-# RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
+RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 
 # RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
