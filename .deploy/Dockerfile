@@ -13,6 +13,7 @@ RUN apt-get -y install composer nginx tar unzip tini redis-server cron php7.3 ph
 
 # Change Nginx Configuration
 WORKDIR /etc/nginx/
+RUN apt-get install wget
 RUN wget -O nginx.conf https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/nginx.conf
 RUN service nginx restart
 
@@ -31,7 +32,6 @@ RUN chown -R www-data:www-data *
 
 RUN echo Test
 WORKDIR /
-RUN apt-get install wget
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
