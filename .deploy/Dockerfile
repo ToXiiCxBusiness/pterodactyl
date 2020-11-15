@@ -37,3 +37,4 @@ RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
+WORKDIR /var/www/pterodactyl
