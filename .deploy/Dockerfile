@@ -8,14 +8,15 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update and install dependencies
 RUN apt-get update
-RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg
-RUN apt-get -y install composer nginx tar unzip tini redis-server cron 
+RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg 
 # php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip 
 
 # Install PHP extensions
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/bin/
 RUN install-php-extensions intl bcmath gd pdo_mysql pdo_pgsql opcache redis uuid exif pcntl zip
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get -y install composer nginx tar unzip tini redis-server cron
 
 # Install Panel
 RUN mkdir -p var/www/pterodactyl
