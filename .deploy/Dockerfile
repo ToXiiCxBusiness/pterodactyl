@@ -22,7 +22,6 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 COPY --from=composer:1.10.5 /usr/bin/composer /usr/local/bin/composer
 
 RUN add-apt-repository main
-RUN add-apt-repository restricted
 RUN add-apt-repository multiverse
 
 RUN apt-get -y install nginx
