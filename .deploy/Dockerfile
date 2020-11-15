@@ -18,8 +18,8 @@ RUN wget -O nginx.conf https://raw.githubusercontent.com/ToXiiCxBusiness/pteroda
 RUN service nginx restart
 
 # Install Panel
-RUN mkdir -p var/www/pterodactyl
-WORKDIR var/www/pterodactyl
+RUN mkdir -p /var/www/pterodactyl
+WORKDIR /var/www/pterodactyl
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.0.3/panel.tar.gz
 RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
@@ -30,9 +30,8 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN chown -R www-data:www-data *
 
-
-WORKDIR /
 RUN echo Test
+WORKDIR /
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
