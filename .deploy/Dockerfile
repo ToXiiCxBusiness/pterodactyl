@@ -29,6 +29,7 @@ WORKDIR /
 RUN apt-get install wget
 RUN mkdir /tmp/pterodactyl
 
+RUN echo Temp
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 
