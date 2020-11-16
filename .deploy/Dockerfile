@@ -28,7 +28,8 @@ RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
-RUN echo test123456789
+RUN echo test
+RUN echo test123
 WORKDIR /
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
