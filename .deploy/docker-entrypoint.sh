@@ -39,6 +39,6 @@ echo "Start Redis Service"
 service redis-server start
 echo "Run PHP Artisan"
 php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=localhost --redis-pass= --redis-port=6379 --settings-ui=yes
-php artisan p:environment:database --host=srv-captain--www-db --port=3306 --database=pterodactyl_panel --username=pterodactyl --password="Q*^SYet2I80Gr2S64yS1&9iEWn7hiV"
+php artisan p:environment:database --host=srv-captain--www-db --port=3306 --database=pterodactyl_panel --username=pterodactyl --password=QSYet2I80Gr2S64yS19iEWn7hiV
 
 exec "$@"
