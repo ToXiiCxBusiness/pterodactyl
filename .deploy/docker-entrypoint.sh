@@ -38,6 +38,7 @@ service php7.3-fpm start
 echo "Start Redis Service"
 service redis-server start
 echo "Run PHP Artisan"
+php artisan key:generate --force
 php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=localhost --redis-pass= --redis-port=6379 --settings-ui=yes
 php artisan p:environment:database --host=srv-captain--mysql-db --port=3306 --database=pterodactyl_panel --username=pterodactyl --password=kveBCfD6DQOBnco8
 
