@@ -28,15 +28,18 @@ RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
-RUN echo test123456
+#Overright default entrypoint provided by nginx docker
 WORKDIR /
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
+#Download Nginx Conf
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
-
 RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
+#Setup SSl
+RUN mkdir /etc/nginx/ssl
+RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/default.crt -keyout /etc/nginx/ssl/default.key -subj "/C=US/ST=Ohio/L=Columbus/O=ToXiiCInc./OU=ToXiiC/CN=panel.toxiic.net"
 
 WORKDIR /var/www/pterodactyl
 
