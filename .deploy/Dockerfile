@@ -41,7 +41,6 @@ WORKDIR /var/www/pterodactyl
 
 RUN php artisan key:generate --force
 RUN php artisan p:environment:setup
-RUN php artisan p:environment:database
 RUN php artisan migrate --seed --force
 
 RUN chown -R www-data:www-data *
