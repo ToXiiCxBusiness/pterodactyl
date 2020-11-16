@@ -39,9 +39,6 @@ RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 
 WORKDIR /var/www/pterodactyl
 
-RUN php artisan key:generate --force
-RUN php artisan p:environment:setup
-
 RUN chown -R www-data:www-data *
 
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
