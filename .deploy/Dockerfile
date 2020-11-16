@@ -11,7 +11,6 @@ RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
 RUN apt-get -y install composer nginx tar unzip tini redis-server cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
 
-RUN echo HELLO123
 # Change Nginx Configuration
 WORKDIR /etc/nginx/
 RUN apt-get install wget
@@ -34,6 +33,7 @@ WORKDIR /
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
+RUN echo 1245
 #Download Nginx Conf
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
