@@ -28,9 +28,6 @@ RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN cp .env.example .env
 RUN composer install --no-dev --optimize-autoloader
 
-RUN chown -R www-data:www-data *
-
-RUN echo Test4
 WORKDIR /
 RUN mkdir /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
@@ -40,6 +37,15 @@ RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.d
 
 RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 
+WORKDIR /var/www/pterodactyl
+
+RUN php artisan key:generate --force
+RUN php artisan p:environment:setup
+RUN php artisan p:environment:database
+RUN php artisan migrate --seed --force
+
+RUN chown -R www-data:www-data *
+
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
 
-WORKDIR /var/www/pterodactyl
+
