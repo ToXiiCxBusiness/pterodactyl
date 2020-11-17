@@ -25,7 +25,9 @@ RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
 
 RUN php -- --install-dir=/usr/local/bin --filename=composer
-RUN cp .env.example .env
+RUN mkdir persistent
+RUN cp .env.example persistent/.env
+RUN ln persistent/.env .env
 RUN composer install --no-dev --optimize-autoloader
 
 #Overright default entrypoint provided by nginx docker
