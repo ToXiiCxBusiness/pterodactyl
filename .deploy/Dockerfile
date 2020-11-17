@@ -46,6 +46,8 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/
 
 WORKDIR /var/www/pterodactyl
 
+RUN php artisan key:generate --force
+
 RUN chown -R www-data:www-data *
 
 RUN (crontab -l ; echo "* * * * * /usr/local/bin/php /srv/app/artisan schedule:run >> /dev/null 2>&1") | crontab
