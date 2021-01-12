@@ -21,28 +21,6 @@ RUN service nginx restart
 #Install Composer
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install Panel
-RUN mkdir -p /var/www/pterodactyl
-WORKDIR /var/www/pterodactyl
-RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
-RUN tar -xzvf panel.tar.gz
-RUN chmod -R 755 storage/* bootstrap/cache/ 
-
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/.env
-
-RUN composer install --no-dev --optimize-autoloader
-
-RUN mkdir /tmp/pterodactyl
-
-#Download Nginx Conf
-WORKDIR /var
-WORKDIR /tmp/pterodactyl
-RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
-RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
-#Setup SSl
-RUN mkdir /etc/nginx/ssl
-RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/default.crt -keyout /etc/nginx/ssl/default.key -subj "/C=US/ST=Ohio/L=Columbus/O=ToXiiCInc./OU=ToXiiC/CN=panel.toxiic.net"
-
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 RUN cp docker-entrypoint.sh /docker-entrypoint.sh
 
