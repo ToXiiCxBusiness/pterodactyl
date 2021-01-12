@@ -27,7 +27,6 @@ RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
 
 RUN php -- --install-dir=/usr/local/bin --filename=composer
-RUN mkdir persistent
 RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir /tmp/pterodactyl
