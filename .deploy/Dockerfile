@@ -21,6 +21,7 @@ RUN service nginx restart
 RUN curl -sS https://getcomposer.org/installer
 RUN php -- --install-dir=/usr/local/bin --filename=composer
 
+#FETCH
 RUN mkdir /tmp/pterodactyl
 WORKDIR /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
