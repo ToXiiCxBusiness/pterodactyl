@@ -43,5 +43,6 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/
 
 #update
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
+RUN cp docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /var/www/pterodactyl
