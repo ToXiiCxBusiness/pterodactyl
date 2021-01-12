@@ -31,7 +31,7 @@ RUN ln persistent/.env .env
 RUN composer install --no-dev --optimize-autoloader
 
 #Overright default entrypoint provided by nginx docker
-WORKDIR /
+WORKDIR /var/www/pterodactyl
 RUN mkdir /tmp/pterodactyl
 RUN ECHO 1
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
