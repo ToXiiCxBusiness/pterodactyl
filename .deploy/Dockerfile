@@ -32,6 +32,7 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir /tmp/pterodactyl
 
+WORKDIR /tmp/pterodactyl
 #Download Nginx Conf
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
