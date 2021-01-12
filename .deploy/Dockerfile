@@ -24,7 +24,7 @@ RUN php -- --install-dir=/usr/local/bin --filename=composer
 #FETCH
 RUN mkdir /tmp/pterodactyl
 WORKDIR /tmp/pterodactyl
-RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
+RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy//docker-entrypoint.sh
 RUN cp docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /var/www/pterodactyl
