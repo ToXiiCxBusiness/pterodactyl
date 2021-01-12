@@ -19,7 +19,7 @@ RUN wget -O nginx.conf https://raw.githubusercontent.com/ToXiiCxBusiness/pteroda
 RUN service nginx restart
 
 #Install Composer
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 RUN cp docker-entrypoint.sh /docker-entrypoint.sh
