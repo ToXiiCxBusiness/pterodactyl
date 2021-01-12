@@ -42,7 +42,7 @@ mkdir -p /var/www/pterodactyl
 cd /var/www/pterodactyl
 curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
 tar -xzvf panel.tar.gz
-hmod -R 755 storage/* bootstrap/cache/ 
+chmod -R 755 storage/* bootstrap/cache/ 
 
 wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/.env
 
