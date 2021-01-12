@@ -35,8 +35,6 @@ fi
 
 echo "Start PHP-FPM Service"
 service php7.3-fpm start
-echo "Start Redis Service"
-service redis-server start
 echo "Run PHP Artisan"
 ln persistent/.env .env --force
 
