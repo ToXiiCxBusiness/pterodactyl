@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
-RUN apt-get -y install composer nginx tar unzip tini redis-server cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
+RUN apt-get -y install composer nginx tar unzip tini cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
 
 # Change Nginx Configuration
 WORKDIR /etc/nginx/
@@ -45,9 +45,8 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/
 WORKDIR /var/www/pterodactyl
 
 #TEMP1
-CMD redis-server
 RUN php artisan key:generate --force --no-interaction
-RUN php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=localhost --redis-pass= --redis-port=6379 --settings-ui=yes --no-interaction
+RUN php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=srv-captain--redis --redis-pass=R6xMITCWLtn7eO8 --redis-port=6379 --settings-ui=yes --no-interaction
 RUN php artisan p:environment:database --host=srv-captain--mysql-db --port=3306 --database=pterodactyl_panel --username=pterodactyl --password=kveBCfD6DQOBnco8 --no-interaction
 
 RUN chown -R www-data:www-data *
