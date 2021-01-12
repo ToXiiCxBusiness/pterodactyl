@@ -1,5 +1,4 @@
 FROM nginx
-WORKDIR /
 
 # Expose HTTP and HTTPS ports
 EXPOSE 80 443
@@ -22,6 +21,8 @@ RUN service nginx restart
 RUN curl -sS https://getcomposer.org/installer
 RUN php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN mkdir /tmp/pterodactyl
+WORKDIR /tmp/pterodactyl
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 RUN cp docker-entrypoint.sh /docker-entrypoint.sh
 
