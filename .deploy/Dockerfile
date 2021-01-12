@@ -26,6 +26,8 @@ RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/d
 RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
 
+RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/.env
+
 RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
