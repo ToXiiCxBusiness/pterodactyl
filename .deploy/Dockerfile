@@ -40,7 +40,7 @@ RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir /etc/nginx/ssl
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/default.crt -keyout /etc/nginx/ssl/default.key -subj "/C=US/ST=Ohio/L=Columbus/O=ToXiiCInc./OU=ToXiiC/CN=panel.toxiic.net"
 
-#Overright default entrypoint provided by nginx docker
+#Overright default entrypoint provided by nginx docker 123
 RUN wget -O docker-entrypoint.sh https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/docker-entrypoint.sh
 
 WORKDIR /var/www/pterodactyl
