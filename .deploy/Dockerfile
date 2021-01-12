@@ -22,7 +22,7 @@ RUN service nginx restart
 # Install Panel
 RUN mkdir -p /var/www/pterodactyl
 WORKDIR /var/www/pterodactyl
-RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.2.1/panel.tar.gz
+RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
 RUN tar -xzvf panel.tar.gz
 RUN chmod -R 755 storage/* bootstrap/cache/ 
 
