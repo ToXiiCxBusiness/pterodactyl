@@ -37,6 +37,28 @@ echo "Start PHP-FPM Service"
 service php7.3-fpm start
 echo "Run PHP Artisan"
 
+# Install Panel
+mkdir -p /var/www/pterodactyl
+cd /var/www/pterodactyl
+curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/latest/download/panel.tar.gz
+tar -xzvf panel.tar.gz
+hmod -R 755 storage/* bootstrap/cache/ 
+
+wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/.env
+
+composer install --no-dev --optimize-autoloader
+
+mkdir /tmp/pterodactyl
+
+#Download Nginx Conf
+cd /tmp/pterodactyl
+wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
+cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
+#Setup SSl
+mkdir /etc/nginx/ssl
+openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/ssl/default.crt -keyout /etc/nginx/ssl/default.key -subj "/C=US/ST=Ohio/L=Columbus/O=ToXiiCInc./OU=ToXiiC/CN=panel.toxiic.net"
+
+
 #echo "More Artisan" Only used to make new config
 #php artisan key:generate --force --no-interaction
 #php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=srv-captain--redis --redis-pass=R6xMITCWLtn7eO8 --redis-port=6379 --settings-ui=yes --no-interaction
