@@ -45,7 +45,6 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out /etc/nginx/
 WORKDIR /var/www/pterodactyl
 
 #TEMP
-RUN sed -e 's/^bind 127\.0\.0\.1$/bind 127.0.0.1 ::1/' < /etc/redis.conf > /tmp/redis.conf && mv /tmp/redis.conf /etc/redis.conf
 RUN redis-server --daemonize yes
 RUN php artisan key:generate --force --no-interaction
 RUN php artisan p:environment:setup --new-salt --author=business.toxiic@gmail.com --url=http://pterodactyl.toxiic.net --timezone=America/New_York --cache=redis --session=redis --queue=redis --redis-host=localhost --redis-pass= --redis-port=6379 --settings-ui=yes --no-interaction
