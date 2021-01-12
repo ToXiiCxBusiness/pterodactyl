@@ -28,14 +28,12 @@ RUN chmod -R 755 storage/* bootstrap/cache/
 
 RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN mkdir persistent
-RUN cp .env.example persistent/.env
-RUN ln persistent/.env .env
 RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir /tmp/pterodactyl
 
 #Download Nginx Conf
-WORKDIR /etc
+WORKDIR /var
 WORKDIR /tmp/pterodactyl
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
 RUN cp /tmp/pterodactyl/default.conf /etc/nginx/conf.d/default.conf
