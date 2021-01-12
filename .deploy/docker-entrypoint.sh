@@ -36,7 +36,6 @@ fi
 echo "Start PHP-FPM Service"
 service php7.3-fpm start
 echo "Run PHP Artisan"
-ln persistent/.env .env --force
 
 #echo "More Artisan"
 php artisan key:generate --force --no-interaction
