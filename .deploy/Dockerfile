@@ -18,6 +18,7 @@ RUN wget -O nginx.conf https://raw.githubusercontent.com/ToXiiCxBusiness/pteroda
 RUN service nginx restart
 
 # Install Panel
+WORKDIR /var/www
 RUN mkdir -p /var/www/pterodactyl
 WORKDIR /var/www/pterodactyl
 RUN curl -Lo panel.tar.gz https://github.com/pterodactyl/panel/releases/download/v1.2.1/panel.tar.gz
