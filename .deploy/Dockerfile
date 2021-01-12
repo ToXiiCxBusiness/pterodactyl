@@ -10,13 +10,16 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
-RUN apt-get -y install composer nginx tar unzip tini cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
+RUN apt-get -y install nginx tar unzip tini cron php7.3 php7.3-cli php7.3-gd php7.3-mysql php7.3-pdo php7.3-mbstring php7.3-bcmath php7.3-xml php7.3-fpm php7.3-curl php7.3-zip
 
 # Change Nginx Configuration
 WORKDIR /etc/nginx/
 RUN apt-get install wget
 RUN wget -O nginx.conf https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/nginx.conf
 RUN service nginx restart
+
+#Install Composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install Panel
 RUN mkdir -p /var/www/pterodactyl
@@ -27,7 +30,6 @@ RUN chmod -R 755 storage/* bootstrap/cache/
 
 RUN wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/.env
 
-RUN php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --no-dev --optimize-autoloader
 
 RUN mkdir /tmp/pterodactyl
