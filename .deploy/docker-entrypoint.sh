@@ -48,8 +48,6 @@ wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deplo
 
 composer install --no-dev --optimize-autoloader
 
-mkdir /tmp/pterodactyl
-
 #Download Nginx Conf
 cd /tmp/pterodactyl
 wget https://raw.githubusercontent.com/ToXiiCxBusiness/pterodactyl/master/.deploy/default.conf
