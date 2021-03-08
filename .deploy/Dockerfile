@@ -10,6 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
 RUN apt-get -y install nginx tar unzip composer tini cron php8.0 php8.0-cli php8.0-gd php8.0-mysql php8.0-pdo php8.0-mbstring php8.0-bcmath php8.0-xml php8.0-fpm php8.0-curl php8.0-zip
+RUN apt-add-repository universe
 
 # Change Nginx Configuration
 WORKDIR /etc/nginx/
