@@ -1,4 +1,5 @@
 #!/bin/sh
+# test
 set -e
 
 if [ -z "${NGINX_ENTRYPOINT_QUIET_LOGS:-}" ]; then
