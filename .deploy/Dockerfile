@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Update and install dependencies
 RUN apt-get update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
-RUN apt-get -y install nginx tar unzip composer tini cron php7.4 php8.0-cli php7.4-gd php7.4-mysql php7.4-pdo php7.4-mbstring php7.4-bcmath php7.4-xml php7.4-fpm php7.4-curl php7.4-zip
+RUN apt-get -y install nginx tar unzip composer tini cron php8 php8-cli php8-gd php8-mysql php8-pdo php8-mbstring php8-bcmath php8-xml php8-fpm php8-curl php8-zip
 
 
 # Change Nginx Configuration
