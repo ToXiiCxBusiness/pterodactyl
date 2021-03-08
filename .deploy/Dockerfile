@@ -8,7 +8,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # Update and install dependencies
 RUN apt-get update
-RUN apt-add-repository universe
 RUN add-apt-repository ppa:ondrej/php
 RUN apt update
 RUN apt-get -y install software-properties-common curl apt-transport-https ca-certificates gnupg build-essential cron locales zip unzip tar
