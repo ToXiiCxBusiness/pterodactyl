@@ -1,6 +1,6 @@
 FROM nginx
 
-# Expose HTTP and HTTPS ports
+# Expose HTTP and HTTPS port
 EXPOSE 80 443
 
 # Disable interactive prompts
